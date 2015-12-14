@@ -3,15 +3,15 @@ $( document ).ready(function() {
 	var checkCookies = function() {
 
 		if (Cookies.get('loggedinId') != null) {
-			$('#signup-form').hide();
-			$('#login-form').hide();
+			// $('#signup-form').hide();
+			// $('#login-form').hide();
 			$('#login-show').hide();
 			$('#signup-show').hide();
 			$('#logout-show').show();
 			
 		} else {
-			$("#signup-form").hide();
-			$("#login-form").hide();
+			// $("#signup-form").hide();
+			// $("#login-form").hide();
 			$("#logout-show").hide();
 		};
 	}
@@ -22,13 +22,19 @@ $( document ).ready(function() {
 //======================start sign up process================================
 //==========================================================================
 	$("#signup-show").click(function() {
-		$('#signup-form').show();
-		$('#signup-show').hide();
-		$('#login-show').hide();
+		// $('#signup-form').show();
+		// $('#signup-show').hide();
+		// $('#login-show').hide();
+		console.log("test");
+		$('#signupModal').show();
+
+		$("#close-signup").click(function() {
+			$("#signupModal").hide();
+		});
 
 		$('#signup-button').click(function() {
 			console.log("testing signup button");
-
+			$("#signupModal").hide();
 			signupSubmit();
 		});
 
@@ -40,14 +46,19 @@ $( document ).ready(function() {
 //==========================================================================
 	
 	$("#login-show").click(function() {
-		$('#login-form').show();
-		$('#login-show').hide();
-		$('#signup-show').hide();
+		// $('#login-form').show();
+		// $('#login-show').hide();
+		// $('#signup-show').hide();
+		$('#loginModal').show();
+
+		$("#close-login").click(function() {
+			$("#loginModal").hide();
+		});
 
 		$('#login-button').click(function() {
 			console.log("testing signup button");
 
-			signinSubmit();
+			loginSubmit();
 		});
 	});
 
@@ -83,7 +94,7 @@ $( document ).ready(function() {
 		}).done(loggedIn);
 	}; //signupSubmit close
 
-	var signinSubmit = function() {
+	var loginSubmit = function() {
 		var emailInput = $('#email').val();
 		var passwordInput = $('#password').val();
 
@@ -104,8 +115,8 @@ $( document ).ready(function() {
 	}; // signinSubmit close
 
 	var loggedIn = function() {
-		$('#signup-form').hide();
-		$('#login-form').hide();
+		// $('#signup-form').hide();
+		// $('#login-form').hide();
 		$('#login-show').hide();
 		$('#signup-show').hide();
 		$('#logout-show').show();
