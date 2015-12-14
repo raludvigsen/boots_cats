@@ -114,3 +114,32 @@ app.get('/users/:id', function(req, res) {
   });
 });
 
+// ============================================
+// Save track
+// ============================================
+
+app.post('/users/:id/tracks', function( req, res ) {
+  console.log(req.body);
+  var track = new Track({
+    drums: req.body.drums,
+    user_id: req.body.currentUser
+  });
+
+  track.save(function(err) {
+    if (err) {
+      console.log(err);
+      res.statusCode = 503;
+    } else {
+      console.log("created track");
+      res.send({
+        drums: track.drums
+      });
+      User.findById(req.params.id).exec(function(err, user) {
+        user.tracks.push(track);
+        user.save();
+      });
+    };
+  });
+
+});
+

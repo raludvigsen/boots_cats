@@ -1,12 +1,4 @@
-#project-container {
-	margin: 0 auto;
-	width: 60%;
-}
 
-#controls {
-	display: table;   
-	margin: 0 auto;
-}
 
 ul#playback {
 	min-width: 696px;
@@ -20,17 +12,26 @@ ul#playback {
 #start, 
 #stop, 
 #resume, 
-#clear{
+#clear,
+#save{
 	background-color: #607466;
+	background-color: transparent;
+	border-color: transparent;
 }
 
 #start:hover, 
 #stop:hover, 
 #resume:hover, 
-#clear:hover{
+#clear:hover,
+#save:hover{
 	background-color: #AEDCC0;
+	border-color: transparent;
 }
 
 body{
 	background-color: #343E3D;
+}
+
+#clickbpm:hover{
+
 }

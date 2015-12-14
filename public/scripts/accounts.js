@@ -22,13 +22,14 @@ $( document ).ready(function() {
 //======================start sign up process================================
 //==========================================================================
 	$("#signup-show").click(function() {
-		// $('#signup-form').show();
-		// $('#signup-show').hide();
-		// $('#login-show').hide();
 		console.log("test");
 		$('#signupModal').show();
 
 		$("#close-signup").click(function() {
+			$("#signupModal").hide();
+		});
+
+		$("#close-signup2").click(function() {
 			$("#signupModal").hide();
 		});
 
@@ -55,6 +56,10 @@ $( document ).ready(function() {
 			$("#loginModal").hide();
 		});
 
+		$("#close-login2").click(function() {
+			$("#loginModal").hide();
+		});
+
 		$('#login-button').click(function() {
 			console.log("testing signup button");
 			$("#loginModal").hide();
@@ -75,11 +80,14 @@ $( document ).ready(function() {
 	$('#instructions').click(function(){
 		$('#instructionModal').show();
 
-		$("#close-inst").click(function() {
+		$("#close-inst").click(function(){
 			$("#instructionModal").hide();
 		});
 
-	})
+		$("#close-inst2").click(function(){
+			$("#instructionModal").hide();
+		});
+	});
 
 
 	var signupSubmit = function() {
@@ -123,8 +131,6 @@ $( document ).ready(function() {
 	}; // signinSubmit close
 
 	var loggedIn = function() {
-		// $('#signup-form').hide();
-		// $('#login-form').hide();
 		$('#login-show').hide();
 		$('#signup-show').hide();
 		$('#logout-show').show();
