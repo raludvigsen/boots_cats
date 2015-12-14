@@ -15,17 +15,127 @@ $( document ).ready(function() {
   	clickbpm.set({
       value: 120
 		})
-
-		var bpm = 480
-		var bpmDisplay = bpm / 4
 	}
 
-	var synth = new Tone.Sampler({
-  	"kick" : "./audio/kick.mp3",
-  	"snare" : "./audio/snare.mp3",
-  	"open-hat" : "./audio/open_hat.mp3",
-  	"closed-hat" : "./audio/closed_hat.mp3",
-  	"perc" : "./audio/kit/perc.mp3"
-  }).toMaster();
 
-})
+	$( document ).on('keydown', function(event) {
+		if (event.keyCode = 32) {
+			drumkit.jumpToCol(-1);
+			drumkit.sequence(bpm);
+		};
+	});
+
+	$('.stop').on('click', function(){
+		drumkit.stop();
+	})
+
+	$('.resume').on('click', function(){
+		drumkit.sequence(bpm);
+	})
+
+	$('.start').on('click', function(){
+		drumkit.jumptoCol(-1);
+		drumkit.sequence(bpm);
+	})
+
+	var synth = new Tone.Sampler({
+	  "kick" : "./audio/kick.wav",
+	  "snare" : "./audio/snare.wav",
+	  "open-hat" : "./audio/hat.wav",
+	  "perc" : "./audio/kit/perc.wav"
+	}).toMaster();
+
+	clickbpm.on('*', function(data){
+	  bpm = (data.value * 4)
+	  drumkit.sequence(bpm);
+	})
+
+	drumkit.on('*', function(data){
+		for (i in data.list){
+			//kick
+			if (data.list.join() === "1,0,0,0"){
+				synth.triggerAttack("kick");
+				break;
+			};
+			if (data.list.join() === "1,0,1,0"){
+				synth.triggerAttack("kick");
+				synth.triggerAttack("snare");
+				break;
+			};
+			if (data.list.join() === "1,0,0,1"){
+				synth.triggerAttack("kick");
+				synth.triggerAttack("perc");
+				break;
+			};
+			if (data.list.join() === "1,1,0,0"){
+				synth.triggerAttack("kick");
+				synth.triggerAttack("hat");
+				break;
+			};
+			if (data.list.join() === "1,0,1,1"){
+				synth.triggerAttack("kick");
+				synth.triggerAttack("snare");
+				synth.triggerAttack("perc");
+			};
+			if (data.list.join() === "1,1,0,1"){
+				synth.triggerAttack("kick");
+				synth.triggerAttack("hat");
+				synth.triggerAttack("perc");
+				break;
+			};
+			if (data.list.join() === "1,1,1,0"){
+				synth.triggerAttack("kick");
+				synth.triggerAttack("hat");
+				synth.triggerAttack("snare");
+				break;
+			};
+			if (data.list.join() === "1,1,1,1"){
+				synth.triggerAttack("kick");
+				synth.triggerAttack("hat");
+				synth.triggerAttack("snare");
+				synth.triggerAttack("perc");
+				break;
+			};
+
+			//hat
+			if (data.list.join() === "0,1,0,0"){
+				synth.triggerAttack("hat");
+				break;
+			};
+			if (data.list.join() === "0,1,0,1"){
+				synth.triggerAttack("hat");
+				synth.triggerAttack("perc");
+				break;
+			};
+			if (data.list.join() === "0,1,1,0"){
+				synth.triggerAttack("hat");
+				synth.triggerAttack("snare");
+				break;
+			};
+			if (data.list.join() === "0,1,1,1"){
+				synth.triggerAttack("hat");
+				synth.triggerAttack("snare");
+				synth.triggerAttack("perc");
+				break;
+			};
+
+			//snare
+			if (data.list.join() === "0,0,1,0"){
+				synth.triggerAttack("snare");
+				break;
+			};
+			if (data.list.join() === "0,0,1,1"){
+				synth.triggerAttack("snare");
+				synth.triggerAttack("perc");
+				break;
+			};
+
+			//perc
+			if (data.list.join() === "0,0,0,1"){
+				synth.triggerAttack("perc");
+				break;
+			};
+		};
+	});
+});
+
