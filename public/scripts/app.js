@@ -2,6 +2,8 @@ console.log("working");
 
 $( document ).ready(function() {
 
+/////////////////////////
+////// DRUM STUFF ///////
 	nx.onload = function() {
 		nx.colorize("fill", "lightgrey");
   	nx.colorize("accent", "#000000");
@@ -16,46 +18,46 @@ $( document ).ready(function() {
       value: 120
 		});
 
-	$( document ).on('keydown', function(event) {
-		if (event.keyCode = 32) {
+		$( document ).on('keydown', function(event) {
+			if (event.keyCode = 32) {
+				drumkit.jumpToCol(-1);
+				drumkit.sequence(bpm);
+			};
+		});
+
+		$('.stop').on('click', function(){
+			drumkit.stop();
+		})
+
+		$('.resume').on('click', function(){
+			drumkit.sequence(bpm);
+		})
+
+		$('.start').on('click', function(){
 			drumkit.jumpToCol(-1);
 			drumkit.sequence(bpm);
-		};
-	});
+		})
 
-	$('.stop').on('click', function(){
-		drumkit.stop();
-	})
+		$('.clear').on('click', function(){
+			if(confirm("This process is irreversible, are you sure?")) {
+				location.reload();
+			}
+		})
 
-	$('.resume').on('click', function(){
-		drumkit.sequence(bpm);
-	})
+		var bpm = 480
+		var bpmDisplay = bpm / 4
 
-	$('.start').on('click', function(){
-		drumkit.jumpToCol(-1);
-		drumkit.sequence(bpm);
-	})
+		var synth = new Tone.Sampler({
+		  "kick" : "./audio/kick.wav",
+		  "snare" : "./audio/snare.wav",
+		  "hat" : "./audio/hat.wav",
+		  "perc" : "./audio/perc.wav"
+		}).toMaster();
 
-	$('.clear').on('click', function(){
-		if(confirm("This process is irreversible, are you sure?")) {
-			location.reload();
-		}
-	})
-
-	var bpm = 480
-	var bpmDisplay = bpm / 4
-
-	var synth = new Tone.Sampler({
-	  "kick" : "./audio/kick.wav",
-	  "snare" : "./audio/snare.wav",
-	  "hat" : "./audio/hat.wav",
-	  "perc" : "./audio/perc.wav"
-	}).toMaster();
-
-	clickbpm.on('*', function(data){
-	  bpm = (data.value * 4)
-	  drumkit.sequence(bpm);
-	})
+		clickbpm.on('*', function(data){
+		  bpm = (data.value * 4)
+		  drumkit.sequence(bpm);
+		})
 
 		drumkit.on('*', function(data){
 			for (i in data.list){
