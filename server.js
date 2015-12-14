@@ -62,7 +62,7 @@ app.post('/users', function(req, res) {
       res.statusCode = 503;
     }else{
 
-      console.log(user.username + ' created!');
+      console.log(user.email + ' created!');
 
       res.cookie('loggedinId', user.id);
 

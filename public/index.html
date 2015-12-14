@@ -18,36 +18,75 @@
 			<h1>BOOTS/CATS</h1>
 			<!--nav bar-->
 
-			<button id="signup-show" class="btn btn-default">Sign up</button>
-			<button id="login-show" class="btn btn-default">Log in</button>
-			<button id="logout-show" class="btn btn-default">Log out</button>
 
-			<div id="signup-form">
-				<form>
-				  <div class="form-group">
-				    <label for="exampleInputEmail1">Email address</label>
-				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-				  </div>
-				  <div class="form-group">
-				    <label for="exampleInputPassword1">Password</label>
-				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-				  </div>
-				  <button type="submit" id="signup-button" class="btn btn-default">Submit</button>
-				</form>
+
+			<!-- Button trigger modal -->
+			<button type="button" id="signup-show" class="btn btn-default">Sign up</button>
+			<button type="button" id="login-show" class="btn btn-default">Log in</button>
+			<button type="button" id="logout-show" class="btn btn-default">Log out</button>
+
+			<!-- signupModal -->
+			<div class="modal" id="signupModal" role="dialog">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Sign up</h4>
+			      </div>
+				      	<div class="modal-body">
+				        	<div id="signup-form">
+										<form>
+										  <div class="form-group">
+										    <label for="exampleInputEmail1">Email address</label>
+										    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+										  </div>
+										  <div class="form-group">
+										    <label for="exampleInputPassword1">Password</label>
+										    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+										  </div>
+										  <!-- <button type="submit" id="signup-button" class="btn btn-default">Submit</button> -->
+										</form>
+									</div>
+								</div>
+
+				      <div class="modal-footer">
+				        <button type="button" id="close-signup" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" id="signup-button" class="btn btn-primary">Submit</button>
+				      </div>
+			    </div>
+			  </div>
 			</div>
 
-			<div id="login-form">
-				<form>
-				  <div class="form-group">
-				    <label for="exampleInputEmail1">Email address</label>
-				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-				  </div>
-				  <div class="form-group">
-				    <label for="exampleInputPassword1">Password</label>
-				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-				  </div>
-				  <button type="submit" id="login-button" class="btn btn-default">Submit</button>
-				</form>
+			<!-- loginModal -->
+			<div class="modal" id="loginModal" role="dialog">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Log in</h4>
+			      </div>
+				      	<div class="modal-body">
+									<div id="login-form">
+										<form>
+										  <div class="form-group">
+										    <label for="exampleInputEmail1">Email address</label>
+										    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+										  </div>
+										  <div class="form-group">
+										    <label for="exampleInputPassword1">Password</label>
+										    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+										  </div>
+										  <button type="submit" id="login-button" class="btn btn-default">Submit</button>
+										</form>
+									</div>
+								</div>
+
+				      <div class="modal-footer">
+				        <button type="button" id="close-login" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" id="login-button" class="btn btn-primary">Submit</button>
+				      </div>
+			    </div>
+			  </div>
 			</div>
 
 			<div id="project-container">
