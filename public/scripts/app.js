@@ -19,26 +19,27 @@ $( document ).ready(function() {
 		});
 
 		$( document ).on('keydown', function(event) {
-			if (event.keyCode = 32) {
+			if (event.keyCode === 32) {
+				event.preventDefault();
 				drumkit.jumpToCol(-1);
 				drumkit.sequence(bpm);
 			};
 		});
 
-		$('.stop').on('click', function(){
+		$('#stop').on('click', function(){
 			drumkit.stop();
 		})
 
-		$('.resume').on('click', function(){
+		$('#resume').on('click', function(){
 			drumkit.sequence(bpm);
 		})
 
-		$('.start').on('click', function(){
+		$('#start').on('click', function(){
 			drumkit.jumpToCol(-1);
 			drumkit.sequence(bpm);
 		})
 
-		$('.clear').on('click', function(){
+		$('#clear').on('click', function(){
 			if(confirm("This process is irreversible, are you sure?")) {
 				location.reload();
 			}

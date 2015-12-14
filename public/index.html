@@ -14,23 +14,30 @@
 	</head>
 	<body>
 
-		
-			<h1>BOOTS/CATS</h1>
-			<!--nav bar-->
-
-
-
 			<!-- Button trigger modal -->
-			<button type="button" id="signup-show" class="btn btn-default">Sign up</button>
-			<button type="button" id="login-show" class="btn btn-default">Log in</button>
-			<button type="button" id="logout-show" class="btn btn-default">Log out</button>
+		<nav class="navbar navbar-inverse">
+ 			<div class="container">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">BOOTS / CATS</a>
+		    </div>
+		    <ul class="nav navbar-nav navbar-right">
+		    	<li><a href="#" class="nav-links" id="instructions">INSTRUCTIONS</a></li>
+          <li><a href="#" class="nav-links" id="signup-show">SIGN UP</a></li>
+          <li><a href="#" class="nav-links" id="login-show">LOG IN</a></li>
+          <li><a href="#" class="nav-links" id="logout-show" style="display: none">LOG OUT</a></li>
+        </ul>
+  		</div>
+		</nav>
+
+
+
 
 			<!-- signupModal -->
 			<div class="modal" id="signupModal" role="dialog">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <button type="button" class="close" id="close-signup" data-dismiss="modal">&times;</button>
 			        <h4 class="modal-title">Sign up</h4>
 			      </div>
 				      	<div class="modal-body">
@@ -62,7 +69,7 @@
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <button type="button" class="close" id="close-login" data-dismiss="modal">&times;</button>
 			        <h4 class="modal-title">Log in</h4>
 			      </div>
 				      	<div class="modal-body">
@@ -76,7 +83,6 @@
 										    <label for="exampleInputPassword1">Password</label>
 										    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 										  </div>
-										  <button type="submit" id="login-button" class="btn btn-default">Submit</button>
 										</form>
 									</div>
 								</div>
@@ -89,13 +95,35 @@
 			  </div>
 			</div>
 
+			<!-- instructionsModal -->
+			<div class="modal" id="instructionModal" role="dialog">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" id="close-login" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Instructions</h4>
+			      </div>
+				      	<div class="modal-body">
+				      		<article>
+				      			tktktktktktktktktktktktktktktktktktktktktktktktktktk
+				      		</article>
+								</div>
+
+				      <div class="modal-footer">
+				        <button type="button" id="close-inst" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+			    </div>
+			  </div>
+			</div>
+
 			<div id="project-container">
 		    <div id="controls">
-		      <ul>
-		        <li><button class="start">START</button></li>
-		        <li><button class="stop">STOP</button></li>
-		        <li><button class="resume">RESUME</button></li>
-		        <li><button class="clear">CLEAR</button></li>
+		      <ul id="playback">
+		        <li><button class="btn btn-primary btn-xs" id="start">START</button></li>
+		        <li><button class="btn btn-primary btn-xs" id="stop">STOP</button></li>
+		        <li><button class="btn btn-primary btn-xs" id="resume">RESUME</button></li>
+		        <li><button class="btn btn-primary btn-xs" id="clear">CLEAR</button></li>
+		        <li><canvas nx="number" id="clickbpm"></canvas></li>
 		      </ul>
 		    </div>
 
@@ -104,7 +132,7 @@
 					<canvas nx="matrix" id="drumkit" class="nx" height="400" width="1792" style="width: 896px; height: 200px;"></canvas>
 				
 				</div>
-					<canvas nx="number" id="clickbpm"></canvas>
+					
 			</div>
 
 		

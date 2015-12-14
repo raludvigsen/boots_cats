@@ -57,7 +57,7 @@ $( document ).ready(function() {
 
 		$('#login-button').click(function() {
 			console.log("testing signup button");
-
+			$("#loginModal").hide();
 			loginSubmit();
 		});
 	});
@@ -72,6 +72,14 @@ $( document ).ready(function() {
 		location.reload();
 	});
 
+	$('#instructions').click(function(){
+		$('#instructionModal').show();
+
+		$("#close-inst").click(function() {
+			$("#instructionModal").hide();
+		});
+
+	})
 
 
 	var signupSubmit = function() {
