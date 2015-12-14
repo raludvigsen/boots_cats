@@ -20,9 +20,6 @@ $( document ).ready(function() {
 		var bpmDisplay = bpm / 4
 	}
 
-
-
-
 	var synth = new Tone.Sampler({
   	"kick" : "./audio/kick.mp3",
   	"snare" : "./audio/snare.mp3",
