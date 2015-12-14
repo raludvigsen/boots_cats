@@ -51,13 +51,12 @@
 										    <label for="exampleInputPassword1">Password</label>
 										    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 										  </div>
-										  <!-- <button type="submit" id="signup-button" class="btn btn-default">Submit</button> -->
 										</form>
 									</div>
 								</div>
 
 				      <div class="modal-footer">
-				        <button type="button" id="close-signup" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" id="close-signup2" class="btn btn-default" data-dismiss="modal">Close</button>
 				        <button type="button" id="signup-button" class="btn btn-primary">Submit</button>
 				      </div>
 			    </div>
@@ -88,7 +87,7 @@
 								</div>
 
 				      <div class="modal-footer">
-				        <button type="button" id="close-login" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" id="close-login2" class="btn btn-default" data-dismiss="modal">Close</button>
 				        <button type="button" id="login-button" class="btn btn-primary">Submit</button>
 				      </div>
 			    </div>
@@ -100,7 +99,7 @@
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <button type="button" class="close" id="close-login" data-dismiss="modal">&times;</button>
+			        <button type="button" class="close" id="close-inst" data-dismiss="modal">&times;</button>
 			        <h4 class="modal-title">Instructions</h4>
 			      </div>
 				      	<div class="modal-body">
@@ -110,29 +109,35 @@
 								</div>
 
 				      <div class="modal-footer">
-				        <button type="button" id="close-inst" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" id="close-inst2" class="btn btn-default" data-dismiss="modal">Close</button>
 				      </div>
 			    </div>
 			  </div>
 			</div>
 
 			<div id="project-container">
-		    <div id="controls">
-		      <ul id="playback">
-		        <li><button class="btn btn-primary btn-xs" id="start">START</button></li>
-		        <li><button class="btn btn-primary btn-xs" id="stop">STOP</button></li>
-		        <li><button class="btn btn-primary btn-xs" id="resume">RESUME</button></li>
-		        <li><button class="btn btn-primary btn-xs" id="clear">CLEAR</button></li>
-		        <li><canvas nx="number" id="clickbpm"></canvas></li>
-		      </ul>
-		    </div>
-
 				
-				<div id="drum-kit">
-					<canvas nx="matrix" id="drumkit" class="nx" height="400" width="1792" style="width: 896px; height: 200px;"></canvas>
-				
-				</div>
 					
+			    <div id="controls" class="row">
+			    	<div class="col-md-2"></div>
+			      <ul id="playback" class="col-md-8">
+			        <li><button class="btn btn-primary btn-xs" id="start"> START </button></li>
+			        <li><button class="btn btn-primary btn-xs" id="stop"> STOP </button></li>
+			        <li><button class="btn btn-primary btn-xs" id="resume"> RESUME </button></li>
+			        <li><button class="btn btn-primary btn-xs" id="clear"> CLEAR </button></li>
+			        <li><button class="btn btn-primary btn-xs" id="save"> SAVE </button></li>
+			        <li><canvas nx="number" id="clickbpm"></canvas></li> 
+			      </ul>
+			      <div class="col-md-2"></div>
+			    </div>
+			    
+		 		<div class="row">
+					<div class="col-md-2"></div>
+					<div id="drum-kit" class="col-md-8">
+						<canvas nx="matrix" id="drumkit" class="nx" height="400" width="1792" style="width: 896px; height: 200px;"></canvas>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
 			</div>
 
 		

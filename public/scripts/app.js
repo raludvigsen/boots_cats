@@ -45,6 +45,26 @@ $( document ).ready(function() {
 			}
 		})
 
+		$('#save').on('click', function(){
+			var id = Cookies.get("loggedinId");
+
+			// var drumArr = [drumkit.matrix];
+
+			var drumData = {
+				currentUser: id,
+				drums: drumkit.matrix
+			}
+
+			$.ajax({
+				url: "/users/" + id + "/tracks",
+				type: "POST",
+				dataType: 'json',
+				data: drumData
+			}).done( function(){
+				console.log(drumData);
+			});
+		})
+
 		var bpm = 480
 		var bpmDisplay = bpm / 4
 
