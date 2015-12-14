@@ -1,0 +1,36 @@
+#project-container {
+	margin: 0 auto;
+	width: 60%;
+}
+
+#controls {
+	display: table;   
+	margin: 0 auto;
+}
+
+ul#playback {
+	min-width: 696px;
+	list-style: none;
+	padding-top: 20px;
+	}
+	ul#playback li {
+		display: inline;
+	}
+
+#start, 
+#stop, 
+#resume, 
+#clear{
+	background-color: #607466;
+}
+
+#start:hover, 
+#stop:hover, 
+#resume:hover, 
+#clear:hover{
+	background-color: #AEDCC0;
+}
+
+body{
+	background-color: #343E3D;
+}
