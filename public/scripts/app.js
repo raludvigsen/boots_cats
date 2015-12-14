@@ -5,7 +5,7 @@ $( document ).ready(function() {
 	nx.onload = function() {
 		nx.colorize("fill", "lightgrey");
   	nx.colorize("accent", "#000000");
-		drumkit.row = 5;
+		drumkit.row = 4;
 		drumkit.col = 16;
 		drumkit.colors.accent = "#7BD389"
 		drumkit.init();
@@ -14,9 +14,7 @@ $( document ).ready(function() {
   	clickbpm.max = 300
   	clickbpm.set({
       value: 120
-		})
-	}
-
+		});
 
 	$( document ).on('keydown', function(event) {
 		if (event.keyCode = 32) {
@@ -34,15 +32,24 @@ $( document ).ready(function() {
 	})
 
 	$('.start').on('click', function(){
-		drumkit.jumptoCol(-1);
+		drumkit.jumpToCol(-1);
 		drumkit.sequence(bpm);
 	})
+
+	$('.clear').on('click', function(){
+		if(confirm("This process is irreversible, are you sure?")) {
+			location.reload();
+		}
+	})
+
+	var bpm = 480
+	var bpmDisplay = bpm / 4
 
 	var synth = new Tone.Sampler({
 	  "kick" : "./audio/kick.wav",
 	  "snare" : "./audio/snare.wav",
-	  "open-hat" : "./audio/hat.wav",
-	  "perc" : "./audio/kit/perc.wav"
+	  "hat" : "./audio/hat.wav",
+	  "perc" : "./audio/perc.wav"
 	}).toMaster();
 
 	clickbpm.on('*', function(data){
@@ -50,92 +57,93 @@ $( document ).ready(function() {
 	  drumkit.sequence(bpm);
 	})
 
-	drumkit.on('*', function(data){
-		for (i in data.list){
-			//kick
-			if (data.list.join() === "1,0,0,0"){
-				synth.triggerAttack("kick");
-				break;
-			};
-			if (data.list.join() === "1,0,1,0"){
-				synth.triggerAttack("kick");
-				synth.triggerAttack("snare");
-				break;
-			};
-			if (data.list.join() === "1,0,0,1"){
-				synth.triggerAttack("kick");
-				synth.triggerAttack("perc");
-				break;
-			};
-			if (data.list.join() === "1,1,0,0"){
-				synth.triggerAttack("kick");
-				synth.triggerAttack("hat");
-				break;
-			};
-			if (data.list.join() === "1,0,1,1"){
-				synth.triggerAttack("kick");
-				synth.triggerAttack("snare");
-				synth.triggerAttack("perc");
-			};
-			if (data.list.join() === "1,1,0,1"){
-				synth.triggerAttack("kick");
-				synth.triggerAttack("hat");
-				synth.triggerAttack("perc");
-				break;
-			};
-			if (data.list.join() === "1,1,1,0"){
-				synth.triggerAttack("kick");
-				synth.triggerAttack("hat");
-				synth.triggerAttack("snare");
-				break;
-			};
-			if (data.list.join() === "1,1,1,1"){
-				synth.triggerAttack("kick");
-				synth.triggerAttack("hat");
-				synth.triggerAttack("snare");
-				synth.triggerAttack("perc");
-				break;
-			};
+		drumkit.on('*', function(data){
+			for (i in data.list){
+				//kick
+				if (data.list.join() === "1,0,0,0"){
+					synth.triggerAttack("kick");
+					break;
+				};
+				if (data.list.join() === "1,0,1,0"){
+					synth.triggerAttack("kick");
+					synth.triggerAttack("snare");
+					break;
+				};
+				if (data.list.join() === "1,0,0,1"){
+					synth.triggerAttack("kick");
+					synth.triggerAttack("perc");
+					break;
+				};
+				if (data.list.join() === "1,1,0,0"){
+					synth.triggerAttack("kick");
+					synth.triggerAttack("hat");
+					break;
+				};
+				if (data.list.join() === "1,0,1,1"){
+					synth.triggerAttack("kick");
+					synth.triggerAttack("snare");
+					synth.triggerAttack("perc");
+				};
+				if (data.list.join() === "1,1,0,1"){
+					synth.triggerAttack("kick");
+					synth.triggerAttack("hat");
+					synth.triggerAttack("perc");
+					break;
+				};
+				if (data.list.join() === "1,1,1,0"){
+					synth.triggerAttack("kick");
+					synth.triggerAttack("hat");
+					synth.triggerAttack("snare");
+					break;
+				};
+				if (data.list.join() === "1,1,1,1"){
+					synth.triggerAttack("kick");
+					synth.triggerAttack("hat");
+					synth.triggerAttack("snare");
+					synth.triggerAttack("perc");
+					break;
+				};
 
-			//hat
-			if (data.list.join() === "0,1,0,0"){
-				synth.triggerAttack("hat");
-				break;
-			};
-			if (data.list.join() === "0,1,0,1"){
-				synth.triggerAttack("hat");
-				synth.triggerAttack("perc");
-				break;
-			};
-			if (data.list.join() === "0,1,1,0"){
-				synth.triggerAttack("hat");
-				synth.triggerAttack("snare");
-				break;
-			};
-			if (data.list.join() === "0,1,1,1"){
-				synth.triggerAttack("hat");
-				synth.triggerAttack("snare");
-				synth.triggerAttack("perc");
-				break;
-			};
+				//hat
+				if (data.list.join() === "0,1,0,0"){
+					synth.triggerAttack("hat");
+					break;
+				};
+				if (data.list.join() === "0,1,0,1"){
+					synth.triggerAttack("hat");
+					synth.triggerAttack("perc");
+					break;
+				};
+				if (data.list.join() === "0,1,1,0"){
+					synth.triggerAttack("hat");
+					synth.triggerAttack("snare");
+					break;
+				};
+				if (data.list.join() === "0,1,1,1"){
+					synth.triggerAttack("hat");
+					synth.triggerAttack("snare");
+					synth.triggerAttack("perc");
+					break;
+				};
 
-			//snare
-			if (data.list.join() === "0,0,1,0"){
-				synth.triggerAttack("snare");
-				break;
-			};
-			if (data.list.join() === "0,0,1,1"){
-				synth.triggerAttack("snare");
-				synth.triggerAttack("perc");
-				break;
-			};
+				//snare
+				if (data.list.join() === "0,0,1,0"){
+					synth.triggerAttack("snare");
+					break;
+				};
+				if (data.list.join() === "0,0,1,1"){
+					synth.triggerAttack("snare");
+					synth.triggerAttack("perc");
+					break;
+				};
 
-			//perc
-			if (data.list.join() === "0,0,0,1"){
-				synth.triggerAttack("perc");
-				break;
+				//perc
+				if (data.list.join() === "0,0,0,1"){
+					synth.triggerAttack("perc");
+					break;
+				};
 			};
-		};
-	});
+		});
+	};
 });
 
