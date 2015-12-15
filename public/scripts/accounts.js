@@ -12,6 +12,7 @@ $( document ).ready(function() {
 		} else {
 			// $("#signup-form").hide();
 			// $("#login-form").hide();
+			$("#my-tracks").hide();
 			$("#logout-show").hide();
 		};
 	}
@@ -133,6 +134,7 @@ $( document ).ready(function() {
 	var loggedIn = function() {
 		$('#login-show').hide();
 		$('#signup-show').hide();
+		$('#my-tracks').show();
 		$('#logout-show').show();
 	};
 

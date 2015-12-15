@@ -46,24 +46,45 @@ $( document ).ready(function() {
 		})
 
 		$('#save').on('click', function(){
-			var id = Cookies.get("loggedinId");
+			$('#saveModal').show()
 
-			// var drumArr = [drumkit.matrix];
-
-			var drumData = {
-				currentUser: id,
-				drums: drumkit.matrix
-			}
-
-			$.ajax({
-				url: "/users/" + id + "/tracks",
-				type: "POST",
-				dataType: 'json',
-				data: drumData
-			}).done( function(){
-				console.log(drumData);
+			$("#close-save").click(function(){
+				$("#saveModal").hide();
 			});
+
+			$("#close-save2").click(function(){
+				$("#saveModal").hide();
+			});			
+
+			$('#save-submit').on('click', function(){
+				$('#saveModal').hide()
+				var titleInput = $("input[id='track-title']").val()
+				var id = Cookies.get("loggedinId");
+				var bpmInput = bpm / 4
+
+				var drumData = {
+					currentUser: id,
+					title: titleInput,
+					drums: drumkit.matrix,
+					bpm: bpmInput
+				}
+
+				$.ajax({
+					url: "/users/" + id + "/tracks",
+					type: "POST",
+					dataType: 'json',
+					data: drumData
+				}).done( function(){
+					console.log(drumData);
+				});
+			})
 		})
+
+		$('#load').on('click', function(){
+			location.reload();
+			//ajax call to get data
+		})
+
 
 		var bpm = 480
 		var bpmDisplay = bpm / 4
