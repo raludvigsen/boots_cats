@@ -121,7 +121,9 @@ app.get('/users/:id', function(req, res) {
 app.post('/users/:id/tracks', function( req, res ) {
   console.log(req.body);
   var track = new Track({
+  	title: req.body.title,
     drums: req.body.drums,
+    bpm: req.body.bpm,
     user_id: req.body.currentUser
   });
 
@@ -132,7 +134,9 @@ app.post('/users/:id/tracks', function( req, res ) {
     } else {
       console.log("created track");
       res.send({
-        drums: track.drums
+      	title: track.title,
+        drums: track.drums,
+        bpm: track.bpm
       });
       User.findById(req.params.id).exec(function(err, user) {
         user.tracks.push(track);
@@ -141,5 +145,11 @@ app.post('/users/:id/tracks', function( req, res ) {
     };
   });
 
+});
+
+app.get('/users/:id/tracks', function(req, res) {
+	Track.find({}, function(err, track) {
+		res.send(track);
+	});
 });
 

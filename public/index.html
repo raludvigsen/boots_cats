@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="boots_cats">
 	<head>
 		<meta charset="UTF-8">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="css/styles.css">	
 		<script type="text/javascript" src="/scripts/Tone.js"></script>
@@ -10,6 +11,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
 		<script type="text/javascript" src="/scripts/app.js"></script>
 		<script type="text/javascript" src="/scripts/accounts.js"></script>
+		<script type="text/javascript" src="/scripts/user_track.js"></script>
 		<title>boots/cats</title>
 	</head>
 	<body>
@@ -22,6 +24,7 @@
 		    </div>
 		    <ul class="nav navbar-nav navbar-right">
 		    	<li><a href="#" class="nav-links" id="instructions">INSTRUCTIONS</a></li>
+		    	<li><a href="#" class="nav-links" id="my-tracks" ng-click="trackCtrl.getTracks()">MY TRACKS</a></li>
           <li><a href="#" class="nav-links" id="signup-show">SIGN UP</a></li>
           <li><a href="#" class="nav-links" id="login-show">LOG IN</a></li>
           <li><a href="#" class="nav-links" id="logout-show" style="display: none">LOG OUT</a></li>
@@ -94,7 +97,30 @@
 			  </div>
 			</div>
 
-			<!-- instructionsModal -->
+			<!-- saveModal -->
+			<div class="modal" id="saveModal" role="dialog">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" id="close-save" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Save your track</h4>
+			      </div>
+				      	<div class="modal-body">
+									<div class="form-group">
+										<label>Title</label>
+										<input type="text" class="form-control" id="track-title" placeholder="Title">
+									</div>
+								</div>
+
+				      <div class="modal-footer">
+				        <button type="button" id="close-save2" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" id="save-submit" class="btn btn-primary">Submit</button>
+				      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<!-- instructionModal -->
 			<div class="modal" id="instructionModal" role="dialog">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
@@ -139,6 +165,17 @@
 					<div class="col-md-2"></div>
 				</div>
 			</div>
+
+			<tracks>
+				<div id="tracks-container" ng-repeat="track in trackCtrl.trackData.tracks">
+					<strong>Title: </strong>{{ track.title }}<br>
+					<strong>BPM: </strong>{{ track.bpm }}<br>
+<!-- 					<strong>Drums: </strong>{{ track.drums }}<br> -->
+					<button class="btn btn-primary btn-xs" id="load">Load</button>
+					<hr>
+				</div>
+			</tracks>
+
 
 		
 	</body>
