@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="css/styles.css">	
@@ -197,10 +198,12 @@
 							<ul class="track-info"> 
 								<br>
 								<li id="track-id" hidden>{{ track._id}}</li>
-								<li id="track-li"><strong>Title: </strong>{{ track.title }}<br></li>
-								<li id="track-li"><strong>BPM: </strong>{{ track.bpm }}<br></li>
-								<li id="track-li"><a href="#" id="load" ng-click="trackCtrl.loadTrack()"><strong>Load</strong></a>
-								<li id="track-li>"><a href="#" id="load" data-id="{{ track._id}}" ng-click="trackCtrl.deleteTrack(track)"><strong>Delete</strong></a>
+								<li id="track-li">Title: {{ track.title }}<br></li>
+								<li id="track-li">BPM: {{ track.bpm }}<br></li>
+								<li id="track-li">Positions: {{track.drums}}
+								<li id="track-li">
+<!-- 									<span class="glyphicon glyphicon-share" id="view" data-id="{{ track._id }}" ng-click="trackCtrl.viewTrack(track)"></span>   -->
+									<span class="glyphicon glyphicon-trash" id="delete" data-id="{{ track._id }}" ng-click="trackCtrl.deleteTrack(track)" aria-hidden="true"></span>
 								<hr>
 							</ul>
 						</div>

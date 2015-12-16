@@ -86,6 +86,13 @@ $( document ).ready(function() {
 		});
 	});
 
+	// $('#view').click(function(){
+	// 	$('#view').popover('show'); 
+
+	// 	// $("close-view").click(function(){
+	// 	// 	$('#viewModal').hide();
+	// 	// })
+	// })
 
 	var signupSubmit = function() {
 

@@ -148,13 +148,13 @@ app.post('/users/:id/tracks', function( req, res ) {
 });
 
 app.get('/users/:id/tracks', function(req, res) {
-	Track.find({}, function(err, track) {
+	Track.find({}).sort({ created_at : -1 }).exec(function(err, track) {
 		res.send(track);
 	});
 });
 
 app.get('/users/:id/tracks/:id', function(req, res) {
-  Track.findById(req.params.id, function(err, track) {
+  Track.findById( {_id: req.params.id}, function(err, track) {
     res.send(track);
   });
 });
