@@ -5,6 +5,7 @@ $( document ).ready(function() {
 			$('#login-show').hide();
 			$('#signup-show').hide();
 			$('#logout-show').show();
+			$("#save").show();
 			
 		} else {
 			$("#save").hide();
