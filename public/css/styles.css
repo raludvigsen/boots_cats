@@ -70,3 +70,7 @@ body{
 #track-li{
   color: papayawhip;
 }
+
+#view, #delete{
+  color: papayawhip;
+}

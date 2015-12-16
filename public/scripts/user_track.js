@@ -12,7 +12,6 @@ app.factory('trackData', ['$http', function( $http ) {
 			});
 		},
 
-
 	  delete : function(id){
 	    var self = this;
 	    var userId = Cookies.get("loggedinId");
@@ -41,20 +40,17 @@ app.directive('tracks', function() {
 			this.getTracks = function() {
 				console.log("getting tracks");
 				self.trackData.get();
+
+
 			}
 
-			this.loadTrack = function(item) {
+			this.viewTrack = function(track) {
 				console.log("test");
 				console.log(this.trackData.tracks.length);	
+				// self.trackData.get();
 
-				var id = angular.element(item).data('_id');
-				console.log(id);
-				// for(var i=0; i<this.trackData.tracks.length; i++) {
-				// 	if(Cookies.get("loggedinId") === this.trackData.tracks.user_id) {
-				// 		var trackId = this.trackData.tracks[i];
-				// 		console.log(trackId);
-				// 	}
-				// }
+
+
 				 //  $.ajax({
 					// 	url: '/users/' + userId + '/tracks/' + trackId,
 					// 	method: 'GET',
