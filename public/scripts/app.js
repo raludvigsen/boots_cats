@@ -80,10 +80,7 @@ $( document ).ready(function() {
 			})
 		})
 
-		$('#load').on('click', function(){
-			location.reload();
-			//ajax call to get data
-		})
+
 
 
 		var bpm = 480

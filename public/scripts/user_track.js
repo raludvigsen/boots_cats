@@ -10,51 +10,23 @@ app.factory('trackData', ['$http', function( $http ) {
 				console.log(self);
 				self.tracks = response.data;
 			});
-		}
+		},
 
-			// post : function() {
-			// 	var self = this;
-			// 	$http.post('/players', {
-			// 		// console.log(self);
-			// 		name: this.formPlayerName, 
-			// 		position: this.formPlayerPosition,
-			// 		imgURL: this.formPlayerImg
-			// 	}).then(function success(response) {
-			// 		self.players.push(response.data);
-			// 		self.formPlayerName = '';
-			// 		self.formPlayerPosition = '';
-			// 		self.formPlayerImg = '';
-			// 	}, function error() {
-			// 		console.log('error');
-			// 	});
-			// },
 
-			// put : function(id){
-	            
-	  //     var self = this;
-	  //       $http.put('/players/' + id, { 
-	  //         name: this.formPlayerName, 
-	  //         position: this.formPlayerPosition,                
-	  //         imgURL: this.formPlayerImg
-	  //       }).then(function success (response) {
+	  delete : function(id){
+	    var self = this;
+	    var userId = Cookies.get("loggedinId");
+	    console.log(userId);
+	    // var id = trackId.attributes['#track-id'].value;
+	    console.log(id);
 
-	  //         // Empty form
-	  //         self.formPlayerName = "";
-	  //         self.formPlayerPosition = "";
-	  //         self.formCoasterImgURL = "";
-	  //       }, function error() {
-	  //         console.log('error');
-	  //       });
-	  //   },
-
-	  //   delete : function(id){
-	  //   	var self = this;
-	  //   	$http.delete('/players/' + id).then(function success(response){
-	  //   		self.get();
-	  //   	}, function error(){
-	  //   		console.log('error');
-	  //   	});
-	  //   }
+	    // "5670d9a23d16f5f60156c971
+	    $http.delete('/users/' + userId + '/tracks/' + id).then(function success(response){
+	    	self.get();
+	    }, function error(){
+	    	console.log('error');
+	    });
+	  }
 	}
 }]);
 
@@ -69,6 +41,29 @@ app.directive('tracks', function() {
 			this.getTracks = function() {
 				console.log("getting tracks");
 				self.trackData.get();
+			}
+
+			this.loadTrack = function(item) {
+				console.log("test");
+				console.log(this.trackData.tracks.length);	
+
+				var id = angular.element(item).data('_id');
+				console.log(id);
+				// for(var i=0; i<this.trackData.tracks.length; i++) {
+				// 	if(Cookies.get("loggedinId") === this.trackData.tracks.user_id) {
+				// 		var trackId = this.trackData.tracks[i];
+				// 		console.log(trackId);
+				// 	}
+				// }
+				 //  $.ajax({
+					// 	url: '/users/' + userId + '/tracks/' + trackId,
+					// 	method: 'GET',
+					// 	dataType: 'json'
+					// }.done();
+			}
+
+			this.deleteTrack = function(track) {
+				self.trackData.delete(track._id);
 			}
 
 		}] // close controller

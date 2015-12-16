@@ -153,3 +153,14 @@ app.get('/users/:id/tracks', function(req, res) {
 	});
 });
 
+app.get('/users/:id/tracks/:id', function(req, res) {
+  Track.findById(req.params.id, function(err, track) {
+    res.send(track);
+  });
+});
+
+app.delete('/users/:id/tracks/:id', function(req, res) {
+  Track.findOneAndRemove({ _id: req.params.id }, function(err, track) {
+    res.send(track + ' deleted');
+  });
+});
