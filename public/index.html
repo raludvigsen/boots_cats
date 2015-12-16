@@ -1,33 +1,215 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="boots_cats">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">	
 		<script type="text/javascript" src="/scripts/Tone.js"></script>
-		<script type="text/javascript" src="/scripts/nexusUI.js"></script>
+		<script type="text/javascript" src="/scripts/nexusUI.js"></script>		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
 		<script type="text/javascript" src="/scripts/app.js"></script>
+		<script type="text/javascript" src="/scripts/accounts.js"></script>
+		<script type="text/javascript" src="/scripts/user_track.js"></script>
 		<title>boots/cats</title>
 	</head>
 	<body>
 
-		<div id="project-container">
-			<div id="header">
-	      <h1>BOOTS/CATS</h1>
-	      <div id="nav">
-	        <ul>
-	          <li><button class="start">START</button></li>
-	          <li><button class="stop">STOP</button></li>
-	          <li><button class="resume">RESUME</button></li>
-	        </ul>
-	      </div>
-	    </div>
-			
-			<div id="drum-kit">
-				<canvas nx="matrix" id="drumkit" class="nx" height="400" width="1792" style="width: 896px; height: 200px;"></canvas>
+			<!-- Button trigger modal -->
+		<nav id="navbar" class="navbar navbar-inverse">
+ 			<div class="container">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">BOOTS / CATS</a>
+		    </div>
+		    <ul class="nav navbar-nav navbar-right">
+		    	<li><a href="#" class="nav-links" id="instructions">INSTRUCTIONS</a></li>
+		    	<li><a href="#" class="nav-links" id="my-tracks" ng-click="trackCtrl.getTracks()">MY TRACKS</a></li>
+          <li><a href="#" class="nav-links" id="signup-show">SIGN UP</a></li>
+          <li><a href="#" class="nav-links" id="login-show">LOGIN</a></li>
+          <li><a href="#" class="nav-links" id="logout-show" style="display: none">LOGOUT</a></li>
+        </ul>
+  		</div>
+		</nav>
+
+
+
+
+			<!-- signupModal -->
+			<div class="modal" id="signupModal" role="dialog">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" id="close-signup" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Sign up</h4>
+			      </div>
+				      	<div class="modal-body">
+				        	<div id="signup-form">
+										<form>
+										  <div class="form-group">
+										    <label for="exampleInputEmail1">Email address</label>
+										    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+										  </div>
+										  <div class="form-group">
+										    <label for="exampleInputPassword1">Password</label>
+										    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+										  </div>
+										</form>
+									</div>
+								</div>
+
+				      <div class="modal-footer">
+				        <button type="button" id="close-signup2" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" id="signup-button" class="btn btn-primary">Submit</button>
+				      </div>
+			    </div>
+			  </div>
 			</div>
-			<canvas nx="number" id="clickbpm"></canvas>
-		</div>
+
+			<!-- loginModal -->
+			<div class="modal" id="loginModal" role="dialog">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" id="close-login" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Log in</h4>
+			      </div>
+				      	<div class="modal-body">
+									<div id="login-form">
+										<form>
+										  <div class="form-group">
+										    <label for="exampleInputEmail1">Email address</label>
+										    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+										  </div>
+										  <div class="form-group">
+										    <label for="exampleInputPassword1">Password</label>
+										    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+										  </div>
+										</form>
+									</div>
+								</div>
+
+				      <div class="modal-footer">
+				        <button type="button" id="close-login2" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" id="login-button" class="btn btn-primary">Submit</button>
+				      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<!-- saveModal -->
+			<div class="modal" id="saveModal" role="dialog">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" id="close-save" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Save your track</h4>
+			      </div>
+				      	<div class="modal-body">
+									<div class="form-group">
+										<label>Title</label>
+										<input type="text" class="form-control" id="track-title" placeholder="Title">
+									</div>
+								</div>
+
+				      <div class="modal-footer">
+				        <button type="button" id="close-save2" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" id="save-submit" class="btn btn-primary">Submit</button>
+				      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<!-- instructionModal -->
+			<div class="modal" id="instructionModal" role="dialog">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" id="close-inst" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Instructions</h4>
+			      </div>
+				      	<div class="modal-body">
+				      		<article>
+				      			tktktktktktktktktktktktktktktktktktktktktktktktktktk
+				      		</article>
+								</div>
+
+				      <div class="modal-footer">
+				        <button type="button" id="close-inst2" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<div id="project-container">
+				
+					
+			    <div id="controls" class="row">
+			    	<div class="col-md-2"></div>
+			      <ul id="playback" class="col-md-8">
+			        <li><button class="btn btn-primary btn-xs" id="start"> START </button></li>
+			        <li><button class="btn btn-primary btn-xs" id="stop"> STOP </button></li>
+			        <li><button class="btn btn-primary btn-xs" id="resume"> RESUME </button></li>
+			        <li><button class="btn btn-primary btn-xs" id="clear"> CLEAR </button></li>
+			        <li><button class="btn btn-primary btn-xs" id="save"> SAVE </button></li>
+			        <li><canvas nx="number" id="clickbpm"></canvas></li> 
+			      </ul>
+			      <div class="col-md-2"></div>
+			    </div>
+			    
+		 	<div class="row">
+				<div id="hover-drum" class="col-lg-2">
+							<div id="desc-container" class="col-md-8">
+								<p class="imgDescription">
+									k i c k  ⟼ 
+									<br>
+									<br>
+									<br>
+									h i - h a t ⟼ 
+									<br>
+									<br>
+									<br>
+									s n a r e ⟼ 
+									<br>
+									<br>
+									<br>
+									p e r c u s s s i o n ⟼ 
+
+
+								</p>
+							</div>		
+				</div>
+						<div id="drum-kit-container">
+						<div class="col-md-8">
+							<canvas nx="matrix" id="drumkit" class="nx" style="width: 896px; height: 200px;"></canvas>
+							<br>
+
+						</div>
+					</div>
+				
+<!-- 				<div class="col-md-2"></div> -->
+			</div>
+
+			<div class="row" id="tracks-list">
+				<div class="col-md-2"></div>
+					<tracks class="col-md-8">
+						<div id="tracks-container" ng-repeat="track in trackCtrl.trackData.tracks">
+							<ul class="track-info"> 
+								<br>
+								<li id="track-id" hidden>{{ track._id}}</li>
+								<li id="track-li">Title: {{ track.title }}<br></li>
+								<li id="track-li">BPM: {{ track.bpm }}<br></li>
+								<li id="track-li">Positions: {{track.drums}}
+								<li id="track-li">
+<!-- 									<span class="glyphicon glyphicon-share" id="view" data-id="{{ track._id }}" ng-click="trackCtrl.viewTrack(track)"></span>   -->
+									<span class="glyphicon glyphicon-trash" id="delete" data-id="{{ track._id }}" ng-click="trackCtrl.deleteTrack(track)" aria-hidden="true"></span>
+								<hr>
+							</ul>
+						</div>
+					</tracks>
+				<div class="col-md-2"></div>
+			</div>
 
 		
 	</body>
