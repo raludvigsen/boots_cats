@@ -1,17 +1,13 @@
 $( document ).ready(function() {
 
 	var checkCookies = function() {
-
 		if (Cookies.get('loggedinId') != null) {
-			// $('#signup-form').hide();
-			// $('#login-form').hide();
 			$('#login-show').hide();
 			$('#signup-show').hide();
 			$('#logout-show').show();
 			
 		} else {
-			// $("#signup-form").hide();
-			// $("#login-form").hide();
+			$("#save").hide();
 			$("#my-tracks").hide();
 			$("#logout-show").hide();
 		};

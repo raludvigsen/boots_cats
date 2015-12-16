@@ -1,5 +1,4 @@
 
-
 ul#playback {
 	min-width: 696px;
 	list-style: none;
@@ -34,3 +33,40 @@ body{
 	background-color: #343E3D;
 }
 
+#hover-drum{
+	position: relative;
+  height: 200px;
+  width: 219px;
+}
+
+#desc-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  height: 200px;
+  width: 219px;
+  text-align: center;
+  font-style: italic;
+
+  visibility: hidden;
+  opacity: 0.5;
+
+  -webkit-transition: visibility opacity 5s;
+  
+}
+#hover-drum:hover #desc-container {
+	display:block;
+  visibility: visible;
+  opacity: 1;
+}
+
+.track-info{
+  list-style: none;
+}
+
+#track-li{
+  color: papayawhip;
+}

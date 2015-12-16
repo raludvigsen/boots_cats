@@ -17,7 +17,7 @@
 	<body>
 
 			<!-- Button trigger modal -->
-		<nav class="navbar navbar-inverse">
+		<nav id="navbar" class="navbar navbar-inverse">
  			<div class="container">
 		    <div class="navbar-header">
 		      <a class="navbar-brand" href="#">BOOTS / CATS</a>
@@ -26,8 +26,8 @@
 		    	<li><a href="#" class="nav-links" id="instructions">INSTRUCTIONS</a></li>
 		    	<li><a href="#" class="nav-links" id="my-tracks" ng-click="trackCtrl.getTracks()">MY TRACKS</a></li>
           <li><a href="#" class="nav-links" id="signup-show">SIGN UP</a></li>
-          <li><a href="#" class="nav-links" id="login-show">LOG IN</a></li>
-          <li><a href="#" class="nav-links" id="logout-show" style="display: none">LOG OUT</a></li>
+          <li><a href="#" class="nav-links" id="login-show">LOGIN</a></li>
+          <li><a href="#" class="nav-links" id="logout-show" style="display: none">LOGOUT</a></li>
         </ul>
   		</div>
 		</nav>
@@ -157,25 +157,56 @@
 			      <div class="col-md-2"></div>
 			    </div>
 			    
-		 		<div class="row">
-					<div class="col-md-2"></div>
-					<div id="drum-kit" class="col-md-8">
-						<canvas nx="matrix" id="drumkit" class="nx" height="400" width="1792" style="width: 896px; height: 200px;"></canvas>
-					</div>
-					<div class="col-md-2"></div>
+		 	<div class="row">
+				<div id="hover-drum" class="col-lg-2">
+							<div id="desc-container" class="col-md-8">
+								<p class="imgDescription">
+									k i c k  ⟼ 
+									<br>
+									<br>
+									<br>
+									h i - h a t ⟼ 
+									<br>
+									<br>
+									<br>
+									s n a r e ⟼ 
+									<br>
+									<br>
+									<br>
+									p e r c u s s s i o n ⟼ 
+
+
+								</p>
+							</div>		
 				</div>
+						<div id="drum-kit-container">
+						<div class="col-md-8">
+							<canvas nx="matrix" id="drumkit" class="nx" style="width: 896px; height: 200px;"></canvas>
+							<br>
+
+						</div>
+					</div>
+				
+<!-- 				<div class="col-md-2"></div> -->
 			</div>
 
-			<tracks>
-				<div id="tracks-container" ng-repeat="track in trackCtrl.trackData.tracks">
-					<strong>Title: </strong>{{ track.title }}<br>
-					<strong>BPM: </strong>{{ track.bpm }}<br>
-<!-- 					<strong>Drums: </strong>{{ track.drums }}<br> -->
-					<button class="btn btn-primary btn-xs" id="load">Load</button>
-					<hr>
-				</div>
-			</tracks>
-
+			<div class="row" id="tracks-list">
+				<div class="col-md-2"></div>
+					<tracks class="col-md-8">
+						<div id="tracks-container" ng-repeat="track in trackCtrl.trackData.tracks">
+							<ul class="track-info"> 
+								<br>
+								<li id="track-id" hidden>{{ track._id}}</li>
+								<li id="track-li"><strong>Title: </strong>{{ track.title }}<br></li>
+								<li id="track-li"><strong>BPM: </strong>{{ track.bpm }}<br></li>
+								<li id="track-li"><a href="#" id="load" ng-click="trackCtrl.loadTrack()"><strong>Load</strong></a>
+								<li id="track-li>"><a href="#" id="load" data-id="{{ track._id}}" ng-click="trackCtrl.deleteTrack(track)"><strong>Delete</strong></a>
+								<hr>
+							</ul>
+						</div>
+					</tracks>
+				<div class="col-md-2"></div>
+			</div>
 
 		
 	</body>
