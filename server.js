@@ -25,7 +25,9 @@ app.use(cookieParser());
 // =============================
 // DB
 // =============================
-mongoose.connect('mongodb://localhost/boots_cats_dev');
+
+var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/boots_cats_dev';
+mongoose.connect(mongoUri);
 
 // ============================================
 // Models
