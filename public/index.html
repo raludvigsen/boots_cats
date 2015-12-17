@@ -131,7 +131,17 @@
 			      </div>
 				      	<div class="modal-body">
 				      		<article>
-				      			tktktktktktktktktktktktktktktktktktktktktktktktktktk
+				      			To make and play a new beat, select squares in the matrix and hit START.
+				      			<br>
+				      			<br>
+				      			To save your beat, create an account or login.
+				      			<br>
+				      			<br>
+				      			Click MY TRACKS to see the title, BPM, and cell positions of beats you've saved. Each bracketed group corresponds to a column in the matrix. Ones being a selected square and zeroes representing an unselected square. To recreate your saved beat, simply select the corresponding squares.
+				      			<br>
+				      			<br>
+				      			<br>
+				      			BOOTS/CATS was created by <a href="http://www.github.com/raludvigsen">Robbie Ludvigsen</a> using Tone.js and Nexus UI. 
 				      		</article>
 								</div>
 
@@ -187,8 +197,7 @@
 
 						</div>
 					</div>
-				
-<!-- 				<div class="col-md-2"></div> -->
+
 			</div>
 
 			<div class="row" id="tracks-list">
@@ -202,14 +211,14 @@
 								<li id="track-li">BPM: {{ track.bpm }}<br></li>
 								<li id="track-li">Positions: {{track.drums}}
 								<li id="track-li">
-<!-- 									<span class="glyphicon glyphicon-share" id="view" data-id="{{ track._id }}" ng-click="trackCtrl.viewTrack(track)"></span>   -->
-									<span class="glyphicon glyphicon-trash" id="delete" data-id="{{ track._id }}" ng-click="trackCtrl.deleteTrack(track)" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-trash" id="delete" data-id="{{ track._id }}" ng-click="trackCtrl.deleteTrack(track)" aria-hidden="true"></span>
 								<hr>
 							</ul>
 						</div>
 					</tracks>
 				<div class="col-md-2"></div>
 			</div>
+
 
 		
 	</body>
