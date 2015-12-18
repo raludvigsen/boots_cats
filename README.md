@@ -1,5 +1,11 @@
 # boots_cats
-drum seqeuncer
+
+
+
+http://boots-cats.herokuapp.com
+
+
+A drum sequencer made using Tone.js and Nexus UI. 
 
 BOOTS AND CATS STUFF
 
