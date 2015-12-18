@@ -40,22 +40,6 @@ app.directive('tracks', function() {
 			this.getTracks = function() {
 				console.log("getting tracks");
 				self.trackData.get();
-
-
-			}
-
-			this.viewTrack = function(track) {
-				console.log("test");
-				console.log(this.trackData.tracks.length);	
-				// self.trackData.get();
-
-
-
-				 //  $.ajax({
-					// 	url: '/users/' + userId + '/tracks/' + trackId,
-					// 	method: 'GET',
-					// 	dataType: 'json'
-					// }.done();
 			}
 
 			this.deleteTrack = function(track) {
