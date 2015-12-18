@@ -75,7 +75,7 @@ $( document ).ready(function() {
 					dataType: 'json',
 					data: drumData
 				}).done( function(){
-					console.log(drumData);
+					$('#my-tracks').trigger('click');
 				});
 			})
 		})
