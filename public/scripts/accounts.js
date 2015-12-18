@@ -5,7 +5,7 @@ $( document ).ready(function() {
 			$('#login-show').hide();
 			$('#signup-show').hide();
 			$('#logout-show').show();
-			$("#save").show();
+			$('#save').show();
 			
 		} else {
 			$("#save").hide();
@@ -140,6 +140,7 @@ $( document ).ready(function() {
 		$('#signup-show').hide();
 		$('#my-tracks').show();
 		$('#logout-show').show();
+		$('#save').show();
 	};
 
 }); //document.ready close
